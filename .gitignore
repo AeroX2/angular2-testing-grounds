@@ -60,3 +60,7 @@ npm-debug.log
 # IDE #
 .idea/
 *.swp
+
+.github/
+.vscode/
+.editorconfig
