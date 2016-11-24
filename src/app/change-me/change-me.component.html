@@ -1,55 +1,51 @@
-<form [formGroup]="userForm" (ngSubmit)="submitForm(userForm.value, userForm.valid)" novalidate>
-    <div>
-        <p>
-            <label>First Name</label>
-            <input type="text" formControlName="firstName">
-        </p>
-        <p>
-            <label>Last Name</label>
-            <input type="text" formControlName="lastName">
-        </p>
-    </div>
-    <div>
-        <button type="submit" [disabled]="!userForm.valid" >Submit</button>
-    </div>
-</form>
+<md-card>
+	<form [formGroup]="userForm" (ngSubmit)="submitForm(userForm.value, userForm.valid)" novalidate>
+		<div>
+			<md-input placeholder="First name" formControlName="firstName"></md-input>
+			<md-input placeholder="Last name" formControlName="lastName"></md-input>
+		</div>
+		<div>
+			<button md-raised-button [disabled]="!userForm.valid" type="submit">Submit</button>
+		</div>
+	</form>
 
-<div *ngIf="users.length > 0">
-    <div *ngFor="let user of users">
-        <label>First Name: {{ user.firstName }}</label><br/>
-        <label>Last Name: {{ user.lastName }} </label>
-    </div>
-</div>
-
-<p>
-	Get a random number
-</p>
-<form [formGroup]="randomForm" (ngSubmit)="getRandomNumber(randomForm.value, randomForm.valid)" novalidate>
-    <div>
-        <p>
-            <label>Minimum Number</label>
-            <input type="number" min="1" max="100" value="1" formControlName="minNum">
-        </p>
-        <p>
-            <label>Maximum Number</label>
-            <input type="number" min="1" max="100" value="10" formControlName="maxNum">
-        </p>
-        <p>
-            <label>Amount</label>
-            <input type="number" min="1" max="100" value="10" formControlName="amount">
-        </p>
-        <p>
-            <input type="checkbox" formControlName="real">Real random numbers<br/>
-        </p>
-    </div>
-    <div>
-        <button type="submit" [disabled]="!randomForm.valid || randomForm.value.minNum > randomForm.value.maxNum">Submit</button>
-    </div>
-</form>
-
-<div *ngIf="random.value">
-	<p>Here are your <span>{{ random.real ? 'real' : 'fake' }}</span> random numbers</p>
-	<div *ngFor="let number of random.value">
-		<label>{{ number }}</label><br/>
+	<div *ngIf="users.length > 0">
+		<div *ngFor="let user of users">
+			<label>First Name: {{ user.firstName }}</label><br/>
+			<label>Last Name: {{ user.lastName }} </label>
+		</div>
 	</div>
-</div>
+</md-card>
+
+<md-card>
+	<p>
+		Get a random number
+	</p>
+	<form [formGroup]="randomForm" (ngSubmit)="getRandomNumber(randomForm.value, randomForm.valid)" novalidate>
+		<div>
+			<label>Minimum Number</label><br/>
+			<md-input type="number" min="1" max="100" align="start" formControlName="minNum"></md-input><br/>
+
+			<label>Maximum Number</label><br/>
+			<md-input type="number" min="1" max="100" align="start" formControlName="maxNum"></md-input><br/>
+
+			<label>Amount</label><br/>
+			<md-input type="number" min="1" max="100" align="start" formControlName="amount"></md-input>
+
+			<br/>
+			<md-checkbox type="checkbox" formControlName="real">Real random numbers</md-checkbox>
+		</div>
+		<div>
+			<button md-raised-button type="submit" [disabled]="!randomForm.valid || randomForm.value.minNum > randomForm.value.maxNum">Submit</button>
+		</div>
+	</form>
+</md-card>
+
+<md-card>
+	<div *ngIf="random.value">
+		<p>Here are your <span>{{ random.real ? 'real' : 'fake' }}</span> random numbers</p>
+		<div *ngFor="let number of random.value">
+			<label>{{ number }}</label><br/>
+		</div>
+	</div>
+</md-card>

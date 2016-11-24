@@ -25,15 +25,15 @@ export class ChangeMeComponent implements OnInit {
 
     ngOnInit() {
         this.userForm = this.formBuilder.group({
-            firstName: ['', [Validators.required, Validators.maxLength(15)]],
-            lastName: ['', [Validators.required, Validators.maxLength(15)]]
+            firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+            lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]]
         });
 
 		let validators = [Validators.required, Validators.pattern('[0-9]{1,3}')];
 		this.randomForm = this.formBuilder.group({
-			minNum: ['', validators],
-			maxNum: ['', validators],
-			amount: ['', Validators],
+			minNum: [1, validators],
+			maxNum: [10, validators],
+			amount: [5, Validators],
 			real: ['',[]]
 		});
     }

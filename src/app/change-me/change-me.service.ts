@@ -9,9 +9,11 @@ export class ChangeMeService {
 	constructor(private http: Http) {}
 
 	public getFakeRandomNumber(min: number, max: number, amount = 1): Observable<number[]> {
+		console.log(min, max);
 		let numbers = [];
 		for (let i = 0; i < amount; i++) {
-			numbers.push(Math.floor(Math.random() * (max-min+1)+min));
+			let randomNum: number = Math.floor(Math.random() * (max-min+1))+min;
+			numbers.push(randomNum);
 		}
 		return Observable.of(numbers);
 	}

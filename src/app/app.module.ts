@@ -2,8 +2,10 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+/* Import material design module */
+import { MaterialModule } from '@angular/material';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -14,7 +16,6 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
@@ -32,7 +33,7 @@ const APP_PROVIDERS = [
 type StoreType = {
 	state: InternalStateType,
 	restoreInputValues: () => void,
-		disposeOldHosts: () => void
+	disposeOldHosts: () => void
 };
 
 /**
@@ -53,7 +54,8 @@ type StoreType = {
 		FormsModule,
 		ReactiveFormsModule,
 		HttpModule,
-		RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+		RouterModule.forRoot(ROUTES, { useHash: true }),
+		MaterialModule.forRoot()
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,
