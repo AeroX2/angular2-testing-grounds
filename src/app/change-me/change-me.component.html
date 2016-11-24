@@ -43,7 +43,7 @@
         </p>
     </div>
     <div>
-        <button type="submit" [disabled]="!randomForm.valid">Submit</button>
+        <button type="submit" [disabled]="!randomForm.valid || randomForm.value.minNum > randomForm.value.maxNum">Submit</button>
     </div>
 </form>
 

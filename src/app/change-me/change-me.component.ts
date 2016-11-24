@@ -33,7 +33,7 @@ export class ChangeMeComponent implements OnInit {
 		this.randomForm = this.formBuilder.group({
 			minNum: ['', validators],
 			maxNum: ['', validators],
-			amount: ['', validators],
+			amount: ['', Validators],
 			real: ['',[]]
 		});
     }
